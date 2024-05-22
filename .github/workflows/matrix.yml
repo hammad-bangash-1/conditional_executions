@@ -1,0 +1,22 @@
+name: matrix demo
+on:
+    push:
+        branches:
+            - master
+jobs:
+    build:
+        strategy:
+            matrix:
+                node-version: [13,14]
+                operating-system: [ubuntu-latest, windows-latest]
+        runs-on: ${{matrix.operating-system}}
+        steps:
+            - name: get code
+              uses: actions/checkout@v3
+            - name: Install node js
+              uses: actions/setup-node@v3
+              with:
+                node-versionL ${{matrix.node-version}}
+
+            
+        
